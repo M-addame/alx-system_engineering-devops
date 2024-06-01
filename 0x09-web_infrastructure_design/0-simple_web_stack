@@ -1,0 +1,96 @@
+1- What is a server ?
+
+A server is a computer program or device that provides a service to another computer program and its user, 
+also known as the client
+
+2- What is the role of the domain name ? 
+
+Domain Names are used for different purposes, 
+including application-specific naming, addressing, 
+and in various networking contexts to establish: Simple identification of hostnames and hosts.
+
+3- What type of DNS record www is in www.foobar.com ?
+
+www is a CNAME (Canonical Name) DNS record-type in www.foobar.com since it also points to the same IP address 
+as foobar.com and if the IP address changes we can only record changes 
+in the DNS A record of foobar.com
+
+4- What is the role of the web server ?
+
+The primary role of a web server is to store, process, and deliver requested information or webpages to end users.
+
+5- What is the role of the application server ?
+
+The function of the application server is to act as host (or container) for the user's business logic while facilitating access to and performance of the business application.
+
+6- What is the role of the database ?
+
+The use of a computer database is typically involved in efficient data management. A shared, integrated computer structure, a database stores the following: End-user data i.e. raw data relevant to the end user. Metadata—the data about data, through which end-user data is integrated and managed.
+
+7- What is the server using to communicate with the computer of the user requesting the website ?
+
+HyperText Transfer Protocol (HTTP) : Web servers and HTTP (a primer) Web browsers communicate with web servers using the HyperText Transfer Protocol (HTTP). When you click a link on a web page, submit a form, or run a search, the browser sends an HTTP Request to the server.
+
+8- SPOF 
+
+A single point of failure (SPOF) is essentially a flaw in the design, configuration, or implementation of a system, circuit, or component that poses a potential risk because it could lead to a situation in which just one malfunction or fault causes the whole system to stop working.
+
+9- Downtime when maintenance needed 
+
+Downtime refers to the period of time during which a system, service, or application is not operational or available to its users. This can occur for various reasons, including maintenance activities such as deploying new code or updates that require a system restart. During these maintenance periods, the affected service or application is intentionally taken offline to apply changes and ensure proper functionality.
+
+Here's a general outline of how downtime for maintenance, like deploying new code and restarting a web server, is typically handled:
+
+1. **Announcement:** Notify users or stakeholders in advance about the upcoming maintenance. This announcement should include the date, time, and duration of the expected downtime. Providing this information allows users to plan their activities accordingly and minimizes the impact of the downtime.
+
+2. **Preparation:** Before the maintenance window, ensure that you have a well-defined plan in place. This plan should include details about the changes you're going to implement, the steps involved, and any potential risks or challenges that might arise. It's also a good idea to have a rollback plan in case something goes wrong during the deployment.
+
+3. **Backup:** Back up any critical data or configurations to ensure that you can restore the system to its previous state if needed.
+
+4. **Graceful Shutdown:** If possible, gracefully shut down the web server or application to minimize any disruption for users. This might involve stopping incoming requests and allowing ongoing transactions to complete before the server is taken offline.
+
+5. **Deployment:** Deploy the new code or updates to the web server. This might involve copying files, updating databases, or making configuration changes. Make sure to follow best practices for deployment to minimize the potential for errors.
+
+6. **Testing:** After the updates are applied, thoroughly test the system to ensure that everything is working as expected. This might involve automated tests, manual checks, or a combination of both.
+
+7. **Communication:** Keep users informed about the progress of the maintenance. Provide updates on any unexpected delays or issues that arise during the process.
+
+8. **Restart:** If a server restart is required, do so after the new code has been deployed and tested. Again, try to do this gracefully to minimize disruptions.
+
+9. **Verification:** After the server is restarted, verify that the application is functioning correctly and that users can access it without issues.
+
+10. **Monitoring:** Keep an eye on the system after the maintenance window to ensure that there are no unexpected problems. Sometimes issues might only become apparent after the system has been in operation for a while.
+
+11. **Completion Announcement:** Once the maintenance is successfully completed, notify users that the system is back online and operational.
+
+By following these steps, you can help minimize the impact of downtime during maintenance activities and ensure a smooth transition back to normal operations.
+
+10 - Cannot scale if too much incoming traffic
+
+Handling high incoming traffic while minimizing downtime is a common challenge for web applications, especially during maintenance or updates. To address this challenge and ensure scalability, consider the following strategies:
+
+1. **Load Balancing:** Implement a load balancer that distributes incoming traffic across multiple servers. This helps distribute the load and prevents any single server from becoming overwhelmed. During maintenance, you can route traffic away from the server being updated, minimizing its impact.
+
+2. **Scaling Infrastructure:** Use cloud-based infrastructure that allows you to easily scale resources up or down based on demand. This could involve adding more virtual machines, containers, or server instances to handle increased traffic during maintenance or peak times.
+
+3. **Auto-Scaling:** Set up auto-scaling rules that automatically add or remove resources based on predefined conditions, such as CPU utilization or incoming request rates. This ensures that your infrastructure can handle traffic spikes without manual intervention.
+
+4. **Blue-Green Deployments:** Implement a blue-green deployment strategy. In this approach, you maintain two identical environments: one (blue) for production and one (green) for updates. During maintenance, you update the green environment, test it thoroughly, and then switch traffic to it. This minimizes downtime and allows for easy rollback if issues arise.
+
+5. **Canary Releases:** Deploy updates gradually to a small subset of users (canary group) before rolling them out to the entire user base. This helps identify potential issues early and minimizes the impact of any problems.
+
+6. **Caching:** Implement caching mechanisms for static content or frequently accessed data. This reduces the load on your servers by serving content directly from cache, which is especially useful during traffic spikes.
+
+7. **Content Delivery Network (CDN):** Utilize a CDN to serve static assets like images, CSS, and JavaScript. CDNs have distributed servers across various locations, which can help reduce the load on your main server during high traffic periods.
+
+8. **Scheduled Maintenance:** Plan maintenance during off-peak hours when traffic is typically lower. This minimizes the impact on users and gives you a window with less incoming traffic.
+
+9. **Graceful Degradation:** Implement a strategy that allows the application to function with reduced features or performance during maintenance. This can help maintain some level of service availability for users.
+
+10. **Communication:** Clearly communicate scheduled maintenance to users in advance. Provide information about expected downtime, duration, and any alternative options they might have during that period.
+
+11. **Monitoring and Alerts:** Set up monitoring tools that provide real-time insights into your application's performance. Configure alerts to notify you when certain thresholds are exceeded, enabling you to proactively address issues.
+
+12. **Optimize Code and Database:** Ensure that your code and database queries are optimized for performance. This can help your application handle higher loads more efficiently.
+
+By combining these strategies, you can effectively manage incoming traffic while performing necessary maintenance tasks on your web application, thus minimizing downtime and ensuring a positive user experience.
